@@ -197,6 +197,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    /**
+     * ListView Adapter to load PSI values in a list
+     */
     public class PSIAdapter extends ArrayAdapter<HashMap<String, Integer>> {
         private ArrayList<HashMap<String, Integer>> psi;
 

@@ -79,6 +79,10 @@ public class NetworkHandler {
         requestQueue.add(req);
     }
 
+    /**
+     * Parse region_metadata json object from response
+     * @param response Json response from the server response
+     */
     private void parseJson(JSONObject response) {
         Log.d(TAG, "parseJson");
         try {
@@ -130,6 +134,12 @@ public class NetworkHandler {
         }
     }
 
+    /**
+     * Parse Json object to fetch PSI values for all the regions
+     * @param response Json response from the webservice
+     * @param region Location object
+     * @return List of locations with the updated PSI values
+     */
     private List<Location> parsePsi(JSONObject response, Location region) {
         Log.d(TAG, "parsePsi location : "+region);
         double latitude = 0.0;
@@ -203,6 +213,11 @@ public class NetworkHandler {
         return locations;
     }
 
+    /**
+     * Parse Latitude from the json response
+     * @param jsonObject Json response from the webservice
+     * @return latitude
+     */
     private double parseLatitude(JSONObject jsonObject) {
         double latitude = 0.0;
         try {
@@ -215,6 +230,11 @@ public class NetworkHandler {
         return latitude;
     }
 
+    /**
+     * Parse Longitude from the json response
+     * @param jsonObject Json response from the webservice
+     * @return logitude
+     */
     private double parseLongitude(JSONObject jsonObject) {
         double longitude = 0.0;
         try {
