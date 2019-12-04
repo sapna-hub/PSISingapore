@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PSISingapore</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="title_psi">"Today PSI looks "</string>
+    <string name="dialog_loading">"Loading"</string>
+    <string name="dialog_wait">"Wait while loading..."</string>
+</resources>
