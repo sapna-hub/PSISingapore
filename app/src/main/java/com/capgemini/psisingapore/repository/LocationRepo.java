@@ -1,10 +1,10 @@
-package com.capgemini.psisingapore;
+package com.capgemini.psisingapore.repository;
 
 import android.app.Application;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.capgemini.psisingapore.data.Location;
+import com.capgemini.psisingapore.model.Location;
 import com.capgemini.psisingapore.network.NetworkHandler;
 import com.capgemini.psisingapore.network.ResponseListener;
 import java.util.List;

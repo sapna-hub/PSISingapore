@@ -4,18 +4,16 @@ import android.app.Application;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.capgemini.psisingapore.data.Location;
+import com.capgemini.psisingapore.model.Location;
 import com.capgemini.psisingapore.network.NetworkHandler;
+import com.capgemini.psisingapore.repository.LocationRepo;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
 
 import java.util.List;
-
-import static org.mockito.Mockito.when;
 
 //@RunWith(PowerMockRunner.class)
 public class LocationRepoTest {

@@ -1,4 +1,4 @@
-package com.capgemini.psisingapore;
+package com.capgemini.psisingapore.view;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,7 +10,10 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.capgemini.psisingapore.data.Location;
+import com.capgemini.psisingapore.util.AppConstants;
+import com.capgemini.psisingapore.viewmodel.MainViewModel;
+import com.capgemini.psisingapore.R;
+import com.capgemini.psisingapore.model.Location;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.capgemini.psisingapore;
 
-import com.capgemini.psisingapore.data.Location;
+import com.capgemini.psisingapore.model.Location;
 
 import org.junit.After;
 import org.junit.Before;

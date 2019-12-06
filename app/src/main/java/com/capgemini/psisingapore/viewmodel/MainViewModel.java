@@ -1,4 +1,4 @@
-package com.capgemini.psisingapore;
+package com.capgemini.psisingapore.viewmodel;
 
 import android.app.Application;
 
@@ -6,7 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.capgemini.psisingapore.data.Location;
+import com.capgemini.psisingapore.repository.LocationRepo;
+import com.capgemini.psisingapore.model.Location;
 
 import java.util.List;
 

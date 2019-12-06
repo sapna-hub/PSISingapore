@@ -1,4 +1,4 @@
-package com.capgemini.psisingapore.data;
+package com.capgemini.psisingapore.model;
 
 import java.io.Serializable;
 import java.util.HashMap;

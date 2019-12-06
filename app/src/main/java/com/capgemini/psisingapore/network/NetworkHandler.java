@@ -10,8 +10,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.capgemini.psisingapore.AppConstants;
-import com.capgemini.psisingapore.data.Location;
+import com.capgemini.psisingapore.util.AppConstants;
+import com.capgemini.psisingapore.model.Location;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,11 +20,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.capgemini.psisingapore.AppConstants.REGION_EAST;
-import static com.capgemini.psisingapore.AppConstants.REGION_NATIONAL;
-import static com.capgemini.psisingapore.AppConstants.REGION_NORTH;
-import static com.capgemini.psisingapore.AppConstants.REGION_SOUTH;
-import static com.capgemini.psisingapore.AppConstants.REGION_WEST;
+import static com.capgemini.psisingapore.util.AppConstants.REGION_EAST;
+import static com.capgemini.psisingapore.util.AppConstants.REGION_NATIONAL;
+import static com.capgemini.psisingapore.util.AppConstants.REGION_NORTH;
+import static com.capgemini.psisingapore.util.AppConstants.REGION_SOUTH;
+import static com.capgemini.psisingapore.util.AppConstants.REGION_WEST;
 
 /**
  * This class has the all the network related methods as well as parsing of the response data.

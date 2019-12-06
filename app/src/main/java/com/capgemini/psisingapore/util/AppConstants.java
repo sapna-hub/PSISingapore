@@ -1,4 +1,4 @@
-package com.capgemini.psisingapore;
+package com.capgemini.psisingapore.util;
 
 /**
  * Class has all the constants used within the application

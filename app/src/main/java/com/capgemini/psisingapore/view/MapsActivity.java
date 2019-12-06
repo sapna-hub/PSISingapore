@@ -1,4 +1,4 @@
-package com.capgemini.psisingapore;
+package com.capgemini.psisingapore.view;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -15,7 +15,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import com.capgemini.psisingapore.data.Location;
+
+import com.capgemini.psisingapore.util.AppConstants;
+import com.capgemini.psisingapore.viewmodel.MainViewModel;
+import com.capgemini.psisingapore.R;
+import com.capgemini.psisingapore.model.Location;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
