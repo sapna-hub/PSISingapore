@@ -48,7 +48,7 @@ class PSIViewAdapter extends RecyclerView.Adapter<PSIViewAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
-            this.psiText = (TextView) itemView.findViewById(R.id.psiText);
+            this.psiText = itemView.findViewById(R.id.psiText);
         }
     }
 }

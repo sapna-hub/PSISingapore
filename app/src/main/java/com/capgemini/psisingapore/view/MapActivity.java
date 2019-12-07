@@ -37,7 +37,7 @@ import java.util.List;
 /**
  * Activity to load Google Maps and load the corresponding data.
  */
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
+public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleMap.OnMarkerClickListener {
 
     private static final String TAG = "MapsActivity";
@@ -72,8 +72,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mainViewModel.getAllLocation().observe(this, new Observer<List<Location>>() {
             @Override
             public void onChanged(@Nullable List<Location> locations) {
-                MapsActivity.this.locations.clear();
-                MapsActivity.this.locations = locations;
+                if(null != MapActivity.this.locations) {
+                    MapActivity.this.locations.clear();
+                }
+                createMarker(locations);
             }
         });
     }
@@ -81,6 +83,38 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setOnMarkerClickListener(this);
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        Log.d(TAG, "Marker " + marker.getTag());
+        switch (marker.getTag().toString()) {
+            case AppConstants.REGION_EAST:
+                showDialog(east);
+                break;
+
+            case AppConstants.REGION_WEST:
+                showDialog(west);
+                break;
+
+            case AppConstants.REGION_SOUTH:
+                showDialog(south);
+                break;
+
+            case AppConstants.REGION_NORTH:
+                showDialog(north);
+                break;
+
+            default:
+                // do nothing
+                break;
+        }
+        return false;
+    }
+
+    private void createMarker(List<Location> locations){
+        MapActivity.this.locations = locations;
         LatLng eastSingapore;
         LatLng westSingapore;
         LatLng northSingapore;
@@ -139,34 +173,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding);
         mMap.animateCamera(cu);
 
-        googleMap.setOnMarkerClickListener(this);
-    }
-
-    @Override
-    public boolean onMarkerClick(Marker marker) {
-        Log.d(TAG, "Marker " + marker.getTag());
-        switch (marker.getTag().toString()) {
-            case AppConstants.REGION_EAST:
-                showDialog(east);
-                break;
-
-            case AppConstants.REGION_WEST:
-                showDialog(west);
-                break;
-
-            case AppConstants.REGION_SOUTH:
-                showDialog(south);
-                break;
-
-            case AppConstants.REGION_NORTH:
-                showDialog(north);
-                break;
-
-            default:
-                // do nothing
-                break;
-        }
-        return false;
     }
 
     /**
@@ -212,6 +218,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        finishAffinity();
+        finish();
     }
 }
