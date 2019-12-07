@@ -4,7 +4,10 @@ import com.capgemini.psisingapore.model.Location;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
 
 import java.util.HashMap;
 
@@ -14,7 +17,11 @@ import static junit.framework.Assert.assertNotSame;
 
 public class LocationTest {
 
+    @Rule
+    public MockitoRule mockitoRule = MockitoJUnit.rule();
+
     private Location location;
+
     @Before
     public void setUp() throws Exception {
         location = new Location("East", 10, 100);
@@ -36,6 +43,7 @@ public class LocationTest {
         assertNotNull(location.getLatitude());
         assertEquals(10.0, location.getLatitude());
     }
+
     @Test
     public void getLatitudeTest() throws Exception {
         assertNotNull(location.getLatitude());

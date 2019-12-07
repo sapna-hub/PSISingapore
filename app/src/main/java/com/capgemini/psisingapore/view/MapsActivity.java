@@ -6,20 +6,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.capgemini.psisingapore.util.AppConstants;
-import com.capgemini.psisingapore.viewmodel.MainViewModel;
 import com.capgemini.psisingapore.R;
 import com.capgemini.psisingapore.model.Location;
+import com.capgemini.psisingapore.util.AppConstants;
+import com.capgemini.psisingapore.viewmodel.MainViewModel;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -29,6 +29,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +39,8 @@ import java.util.List;
  */
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleMap.OnMarkerClickListener {
+
+    private static final String TAG = "MapsActivity";
 
     private GoogleMap mMap;
     private List<Location> locations = new ArrayList<>();
@@ -86,7 +89,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
         for (Location location : locations) {
 
-            switch (location.getName().toLowerCase()){
+            switch (location.getName().toLowerCase()) {
                 case AppConstants.REGION_EAST:
                     east = location;
                     eastSingapore = new LatLng(location.getLatitude(), location.getLongitude());
@@ -124,9 +127,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(nationalSingapore));
                     break;
 
-                    default:
-                        //do nothing
-                        break;
+                default:
+                    //do nothing
+                    break;
             }
         }
         LatLngBounds bounds = builder.build();
@@ -141,7 +144,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        Log.d("Sapna", "Marker " + marker.getTag());
+        Log.d(TAG, "Marker " + marker.getTag());
         switch (marker.getTag().toString()) {
             case AppConstants.REGION_EAST:
                 showDialog(east);
@@ -168,17 +171,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     /**
      * A Dialog appears on click of the marker to show the list of PSI data
+     *
      * @param location
      */
     private void showDialog(Location location) {
-        LayoutInflater factory = LayoutInflater.from(context);
-        final View psiDialogView = factory.inflate(R.layout.dialog, null);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        final View psiDialogView = inflater.inflate(R.layout.dialog, null);
         final AlertDialog psiDialog = new AlertDialog.Builder(context, R.style.CustomAlertDialog).create();
         psiDialog.setView(psiDialogView);
 
         TextView text = psiDialogView.findViewById(R.id.title);
-        text.setText(getResources().getString(R.string.title_psi)+ location.getAppInfo() + "!");
-        ListView lv = psiDialogView.findViewById(R.id.psilistview);
+        text.setText(getResources().getString(R.string.title_psi) + location.getAppInfo() + "!");
+        RecyclerView psiListview = psiDialogView.findViewById(R.id.psilistview);
 
         ArrayList<HashMap<String, Integer>> names = new ArrayList<>();
 
@@ -186,8 +190,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         names.add(location.getO3EightHourMax());
         names.add(location.getPsiTwentyFourHourly());
         names.add(location.getSo2TwentyFourHourly());
-        PSIAdapter adapter = new PSIAdapter(this, names);
-        lv.setAdapter(adapter);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+        psiListview.setLayoutManager(layoutManager);
+
+        PSIViewAdapter adapter = new PSIViewAdapter(inflater, names);
+        psiListview.setAdapter(adapter);
 
         Button dialogButton = psiDialogView.findViewById(R.id.buttonOk);
         dialogButton.setOnClickListener(new View.OnClickListener() {
@@ -199,31 +207,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         psiDialog.show();
 
-    }
-
-    /**
-     * ListView Adapter to load PSI values in a list
-     */
-    public class PSIAdapter extends ArrayAdapter<HashMap<String, Integer>> {
-        private ArrayList<HashMap<String, Integer>> psi;
-
-        public PSIAdapter(Context context, ArrayList<HashMap<String, Integer>> psi) {
-            super(context, 0, psi);
-            this.psi = psi;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_item,
-                        parent, false);
-            }
-            TextView val = convertView.findViewById(R.id.val);
-            String newText = psi.get(position).toString().replace("{", "").replace("}", "")
-                    .replace("_", " ");
-            val.setText(newText);
-            return convertView;
-        }
     }
 
     @Override

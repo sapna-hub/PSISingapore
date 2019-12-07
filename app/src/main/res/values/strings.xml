@@ -5,4 +5,19 @@
     <string name="title_psi">"Today PSI looks "</string>
     <string name="dialog_loading">"Loading"</string>
     <string name="dialog_wait">"Wait while loading..."</string>
+
+
+    <string name="psi_twenty_four_hourly">"Pollutant Standards Index (in 24 hours)"</string>
+    <string name="no2_one_hour_max">"Nitrogen oxide (1 hour max)"</string>
+    <string name="o3_eight_hour_max">"Ozone (8 hours max)"</string>
+    <string name="so2_twenty_four_hourly">"Sulfur dioxide (in 24 hours)"</string>
+    <string name="pm10_sub_index">"10 micrometer Particulate Matter (sub Index)"</string>
+    <string name="pm10_twenty_four_hourly">"10 micrometers Particulate Matter (in 24 hours)"</string>
+    <string name="pm25_sub_index">"2.5 micrometer Particulate Matter (sub Index)"</string>
+    <string name="pm25_twenty_four_hourly">"2.5 micrometers Particulate Matter (in 24 hours)"</string>
+    <string name="o3_sub_index">"Ozone (sub Index)"</string>
+    <string name="co_sub_index">" Carbon monooxide (sub Index)"</string>
+    <string name="co_eight_hour_max">"Carbon monooxide (8 hours max)"</string>
+    <string name="so2_sub_index">"Sulfur dioxide (sub Index)"</string>
+
 </resources>

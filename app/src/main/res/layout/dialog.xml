@@ -14,10 +14,9 @@
             android:text="Success"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-        <ListView android:id="@+id/psilistview"
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/psilistview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         <Button
