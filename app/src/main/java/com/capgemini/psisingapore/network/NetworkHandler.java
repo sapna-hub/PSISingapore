@@ -48,6 +48,7 @@ public class NetworkHandler {
         try {
             requestQueue = Volley.newRequestQueue(context.getApplicationContext());
         } catch (Exception e) {
+            Log.d(TAG, ""+e.getMessage());
             e.printStackTrace();
         }
     }
@@ -143,17 +144,16 @@ public class NetworkHandler {
      */
     private List<Location> parsePsi(JSONObject response, Location region) {
         Log.d(TAG, "parsePsi location : "+region);
-        double latitude = 0.0;
         try {
             JSONArray jsonArray = response.getJSONArray("items");
             String status = response.getJSONObject("api_info").getString("status");
             JSONObject readings = jsonArray.getJSONObject(0).getJSONObject("readings");
             switch (region.getName()) {
                 case REGION_EAST:
-                    int e_no2_one_hour_max = readings.getJSONObject("no2_one_hour_max").getInt("east");
-                    int e_o3_eight_hour_max = readings.getJSONObject("o3_eight_hour_max").getInt("east");
-                    int e_psi_twenty_four_hourly = readings.getJSONObject("psi_twenty_four_hourly").getInt("east");
-                    int e_so2_twenty_four_hourly = readings.getJSONObject("so2_twenty_four_hourly").getInt("east");
+                    int e_no2_one_hour_max = readings.getJSONObject("no2_one_hour_max").getInt(REGION_EAST);
+                    int e_o3_eight_hour_max = readings.getJSONObject("o3_eight_hour_max").getInt(REGION_EAST);
+                    int e_psi_twenty_four_hourly = readings.getJSONObject("psi_twenty_four_hourly").getInt(REGION_EAST);
+                    int e_so2_twenty_four_hourly = readings.getJSONObject("so2_twenty_four_hourly").getInt(REGION_EAST);
 
                     east.setNo2OnehourMax(context.getResources().getString(R.string.no2_one_hour_max), e_no2_one_hour_max);
                     east.setO3EightHourMax(context.getResources().getString(R.string.o3_eight_hour_max), e_o3_eight_hour_max);
@@ -164,10 +164,10 @@ public class NetworkHandler {
 
                     break;
                 case REGION_WEST:
-                    int w_no2_one_hour_max = readings.getJSONObject("no2_one_hour_max").getInt("west");
-                    int w_o3_eight_hour_max = readings.getJSONObject("o3_eight_hour_max").getInt("west");
-                    int w_psi_twenty_four_hourly = readings.getJSONObject("psi_twenty_four_hourly").getInt("west");
-                    int w_so2_twenty_four_hourly = readings.getJSONObject("so2_twenty_four_hourly").getInt("west");
+                    int w_no2_one_hour_max = readings.getJSONObject("no2_one_hour_max").getInt(REGION_WEST);
+                    int w_o3_eight_hour_max = readings.getJSONObject("o3_eight_hour_max").getInt(REGION_WEST);
+                    int w_psi_twenty_four_hourly = readings.getJSONObject("psi_twenty_four_hourly").getInt(REGION_WEST);
+                    int w_so2_twenty_four_hourly = readings.getJSONObject("so2_twenty_four_hourly").getInt(REGION_WEST);
 
                     west.setNo2OnehourMax(context.getResources().getString(R.string.no2_one_hour_max), w_no2_one_hour_max);
                     west.setO3EightHourMax(context.getResources().getString(R.string.o3_eight_hour_max), w_o3_eight_hour_max);
@@ -177,10 +177,10 @@ public class NetworkHandler {
                     locations.add(west);
                     break;
                 case REGION_NORTH:
-                    int n_no2_one_hour_max = readings.getJSONObject("no2_one_hour_max").getInt("north");
-                    int n_o3_eight_hour_max = readings.getJSONObject("o3_eight_hour_max").getInt("north");
-                    int n_psi_twenty_four_hourly = readings.getJSONObject("psi_twenty_four_hourly").getInt("north");
-                    int n_so2_twenty_four_hourly = readings.getJSONObject("so2_twenty_four_hourly").getInt("north");
+                    int n_no2_one_hour_max = readings.getJSONObject("no2_one_hour_max").getInt(REGION_NORTH);
+                    int n_o3_eight_hour_max = readings.getJSONObject("o3_eight_hour_max").getInt(REGION_NORTH);
+                    int n_psi_twenty_four_hourly = readings.getJSONObject("psi_twenty_four_hourly").getInt(REGION_NORTH);
+                    int n_so2_twenty_four_hourly = readings.getJSONObject("so2_twenty_four_hourly").getInt(REGION_NORTH);
 
                     north.setNo2OnehourMax(context.getResources().getString(R.string.no2_one_hour_max), n_no2_one_hour_max);
                     north.setO3EightHourMax(context.getResources().getString(R.string.o3_eight_hour_max), n_o3_eight_hour_max);
@@ -191,10 +191,10 @@ public class NetworkHandler {
                     break;
                 case REGION_SOUTH:
 
-                    int s_no2_one_hour_max = readings.getJSONObject("no2_one_hour_max").getInt("south");
-                    int s_o3_eight_hour_max = readings.getJSONObject("o3_eight_hour_max").getInt("south");
-                    int s_psi_twenty_four_hourly = readings.getJSONObject("psi_twenty_four_hourly").getInt("south");
-                    int s_so2_twenty_four_hourly = readings.getJSONObject("so2_twenty_four_hourly").getInt("south");
+                    int s_no2_one_hour_max = readings.getJSONObject("no2_one_hour_max").getInt(REGION_SOUTH);
+                    int s_o3_eight_hour_max = readings.getJSONObject("o3_eight_hour_max").getInt(REGION_SOUTH);
+                    int s_psi_twenty_four_hourly = readings.getJSONObject("psi_twenty_four_hourly").getInt(REGION_SOUTH);
+                    int s_so2_twenty_four_hourly = readings.getJSONObject("so2_twenty_four_hourly").getInt(REGION_SOUTH);
 
                     south.setNo2OnehourMax(context.getResources().getString(R.string.no2_one_hour_max), s_no2_one_hour_max);
                     south.setO3EightHourMax(context.getResources().getString(R.string.o3_eight_hour_max), s_o3_eight_hour_max);

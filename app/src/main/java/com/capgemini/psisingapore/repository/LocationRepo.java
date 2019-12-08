@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class LocationRepo {
 
-    private MutableLiveData<List<Location>> mutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<List<Location>> psiDataForLocations = new MutableLiveData<>();
     private Application application;
 
     public LocationRepo(Application application) {
@@ -26,7 +26,7 @@ public class LocationRepo {
 
             @Override
             public void getResult(List<Location> object) {
-                mutableLiveData.setValue(object);
+                psiDataForLocations.setValue(object);
             }
 
             @Override
@@ -34,6 +34,6 @@ public class LocationRepo {
             }
         });
 
-        return mutableLiveData;
+        return psiDataForLocations;
     }
 }

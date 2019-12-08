@@ -81,7 +81,7 @@ public class LocationTest {
         location.setNo2OnehourMax("key", 12);
         HashMap<String, Integer> mapno2 = new HashMap<>();
         mapno2.put("key", 12);
-        assertEquals(mapno2, location.getNo2OnehourMax());
+        assertEquals(mapno2, location.getNo2OneHourMax());
     }
 
     @Test
@@ -90,7 +90,7 @@ public class LocationTest {
         location.setNo2OnehourMax("key", 19);
         HashMap<String, Integer> mapno2 = new HashMap<>();
         mapno2.put("key", 12);
-        assertNotSame(mapno2, location.getNo2OnehourMax());
+        assertNotSame(mapno2, location.getNo2OneHourMax());
     }
 
     @Test

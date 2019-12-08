@@ -2,6 +2,7 @@ package com.capgemini.psisingapore.model;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Model class that holds data from the response as an object called location
@@ -44,42 +45,42 @@ public class Location implements Serializable {
     }
 
     public void setNo2OnehourMax(String key, int val) {
-        HashMap<String, Integer> no2OnehourMax = new HashMap<>();
-        no2OnehourMax.put(key, val);
-        this.no2OneHourMax = no2OnehourMax;
+        HashMap<String, Integer> mapNo2OneHourMax = new HashMap<>();
+        mapNo2OneHourMax.put(key, val);
+        this.no2OneHourMax = mapNo2OneHourMax;
     }
 
     public void setO3EightHourMax(String key, int val) {
-        HashMap<String, Integer> o3EightHourMax = new HashMap<>();
-        o3EightHourMax.put(key, val);
-        this.o3EightHourMax = o3EightHourMax;
+        HashMap<String, Integer> mapO3EightHourMax = new HashMap<>();
+        mapO3EightHourMax.put(key, val);
+        this.o3EightHourMax = mapO3EightHourMax;
     }
 
     public void setPsiTwentyFourHourly(String key, int val) {
-        HashMap<String, Integer> psiTwentyFourHourly = new HashMap<>();
-        psiTwentyFourHourly.put(key, val);
-        this.psiTwentyFourHourly = psiTwentyFourHourly;
+        HashMap<String, Integer> mapPsiTwentyFourHourly = new HashMap<>();
+        mapPsiTwentyFourHourly.put(key, val);
+        this.psiTwentyFourHourly = mapPsiTwentyFourHourly;
     }
 
     public void setSo2TwentyFourHourly(String key, int val) {
-        HashMap<String, Integer> so2TwentyFourHourly = new HashMap<>();
-        so2TwentyFourHourly.put(key, val);
-        this.so2TwentyFourHourly = so2TwentyFourHourly;
+        HashMap<String, Integer> mapSo2TwentyFourHourly = new HashMap<>();
+        mapSo2TwentyFourHourly.put(key, val);
+        this.so2TwentyFourHourly = mapSo2TwentyFourHourly;
     }
 
-    public HashMap<String, Integer> getNo2OnehourMax() {
+    public Map<String, Integer> getNo2OneHourMax() {
         return no2OneHourMax;
     }
 
-    public HashMap<String, Integer> getO3EightHourMax() {
+    public Map<String, Integer> getO3EightHourMax() {
         return o3EightHourMax;
     }
 
-    public HashMap<String, Integer> getPsiTwentyFourHourly() {
+    public Map<String, Integer> getPsiTwentyFourHourly() {
         return psiTwentyFourHourly;
     }
 
-    public HashMap<String, Integer> getSo2TwentyFourHourly() {
+    public Map<String, Integer> getSo2TwentyFourHourly() {
         return so2TwentyFourHourly;
     }
 

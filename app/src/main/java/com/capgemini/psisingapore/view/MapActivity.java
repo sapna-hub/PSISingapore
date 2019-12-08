@@ -8,14 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.capgemini.psisingapore.R;
 import com.capgemini.psisingapore.model.Location;
 import com.capgemini.psisingapore.util.AppConstants;
@@ -29,10 +27,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Activity to load Google Maps and load the corresponding data.
@@ -113,6 +110,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         return false;
     }
 
+    /**
+     * Method to create marker based on the Location latitude and longitude.
+     * @param locations
+     */
     private void createMarker(List<Location> locations){
         MapActivity.this.locations = locations;
         LatLng eastSingapore;
@@ -172,7 +173,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         int padding = (int) (width * 0.10);
         CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding);
         mMap.animateCamera(cu);
-
     }
 
     /**
@@ -190,9 +190,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         text.setText(getResources().getString(R.string.title_psi) + location.getAppInfo() + "!");
         RecyclerView psiListview = psiDialogView.findViewById(R.id.psilistview);
 
-        ArrayList<HashMap<String, Integer>> names = new ArrayList<>();
+        ArrayList<Map<String, Integer>> names = new ArrayList<>();
 
-        names.add(location.getNo2OnehourMax());
+        names.add(location.getNo2OneHourMax());
         names.add(location.getO3EightHourMax());
         names.add(location.getPsiTwentyFourHourly());
         names.add(location.getSo2TwentyFourHourly());
@@ -212,7 +212,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         });
 
         psiDialog.show();
-
     }
 
     @Override

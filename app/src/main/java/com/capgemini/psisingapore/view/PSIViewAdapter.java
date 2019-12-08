@@ -4,49 +4,45 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.capgemini.psisingapore.R;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Recycler view to show the list of PSI values.
  */
-class PSIViewAdapter extends RecyclerView.Adapter<PSIViewAdapter.ViewHolder> {
-    private ArrayList<HashMap<String, Integer>> arrPsiList;
-    private  LayoutInflater mLayoutInflater;
+class PSIViewAdapter extends RecyclerView.Adapter<PSIViewAdapter.PSIViewHolder> {
+    private List<Map<String, Integer>> psiList;
+    private LayoutInflater mLayoutInflater;
 
-    public PSIViewAdapter(LayoutInflater layoutInflater, ArrayList<HashMap<String, Integer>> arrPsiList) {
+    public PSIViewAdapter(LayoutInflater layoutInflater, List<Map<String, Integer>> psiList) {
         mLayoutInflater = layoutInflater;
-        this.arrPsiList = arrPsiList;
+        this.psiList = psiList;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PSIViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mLayoutInflater.inflate(R.layout.dialog_item, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+        return new PSIViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        HashMap<String, Integer> psi = arrPsiList.get(position);
+    public void onBindViewHolder(PSIViewHolder holder, int position) {
+        Map<String, Integer> psi = psiList.get(position);
         holder.psiText.setText(psi.toString().replace("{", "").replace("}", "")
                 .replace("_", " "));
     }
 
     @Override
     public int getItemCount() {
-        return arrPsiList.size();
+        return psiList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView psiText;
+    public static class PSIViewHolder extends RecyclerView.ViewHolder {
+        TextView psiText;
 
-        public ViewHolder(View itemView) {
+        public PSIViewHolder(View itemView) {
             super(itemView);
             this.psiText = itemView.findViewById(R.id.psiText);
         }
