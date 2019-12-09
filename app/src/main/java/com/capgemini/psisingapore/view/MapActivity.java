@@ -2,6 +2,7 @@ package com.capgemini.psisingapore.view;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -173,6 +174,12 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         int padding = (int) (width * 0.10);
         CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding);
         mMap.animateCamera(cu);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        createMarker(locations);
     }
 
     /**
