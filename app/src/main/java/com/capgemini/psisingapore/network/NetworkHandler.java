@@ -27,10 +27,10 @@ import static com.capgemini.psisingapore.util.AppConstants.REGION_WEST;
  * This class has the all the network related methods as well as parsing of the response data.
  */
 public class NetworkHandler {
-    private static Context context;
     private static final String TAG = "NetworkHandler";
+    private static Context context;
     private static NetworkHandler instance = null;
-    public RequestQueue requestQueue;
+    private RequestQueue requestQueue;
 
     private Location east;
     private Location west;
