@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.capgemini.psisingapore.R;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Recycler view to show the list of PSI values.
@@ -29,9 +30,12 @@ class PSIViewAdapter extends RecyclerView.Adapter<PSIViewAdapter.PSIViewHolder> 
 
     @Override
     public void onBindViewHolder(PSIViewHolder holder, int position) {
-        Map<String, Integer> psi = psiList.get(position);
-        holder.psiText.setText(psi.toString().replace("{", "").replace("}", "")
-                .replace("_", " "));
+        Map<String, Integer> mapPsi = psiList.get(position);
+        Set<String> keys = mapPsi.keySet();
+        for(String key: keys){
+            holder.psiText.setText(key);
+            holder.psiVal.setText(mapPsi.get(key).toString());
+        }
     }
 
     @Override
@@ -41,10 +45,12 @@ class PSIViewAdapter extends RecyclerView.Adapter<PSIViewAdapter.PSIViewHolder> 
 
     public static class PSIViewHolder extends RecyclerView.ViewHolder {
         TextView psiText;
+        TextView psiVal;
 
         public PSIViewHolder(View itemView) {
             super(itemView);
             this.psiText = itemView.findViewById(R.id.psiText);
+            this.psiVal = itemView.findViewById(R.id.psiVal);
         }
     }
 }
