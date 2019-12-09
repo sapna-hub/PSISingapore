@@ -1,6 +1,7 @@
 package com.capgemini.psisingapore.viewmodel;
 
 import android.app.Application;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
@@ -16,6 +17,10 @@ public class MainViewModel extends AndroidViewModel {
 
     public MainViewModel(@NonNull Application application) {
         super(application);
+        initLocationRepo(application);
+    }
+
+    public void initLocationRepo(@NonNull Application application) {
         locationRepository = new LocationRepo(application);
     }
 

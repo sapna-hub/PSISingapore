@@ -7,7 +7,7 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
+        classpath 'com.android.tools.build:gradle:3.5.1'
         classpath 'org.jacoco:org.jacoco.agent:0.8.2'
         classpath 'org.jacoco:org.jacoco.ant:0.8.5'
         
