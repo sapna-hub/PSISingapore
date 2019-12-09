@@ -18,6 +18,7 @@ public class Location implements Serializable {
     private HashMap<String, Integer> psiTwentyFourHourly = new HashMap<>();
     private HashMap<String, Integer> so2TwentyFourHourly = new HashMap<>();
 
+
     public Location(String name, double latitude, double longitude) {
         this.name = name;
         this.latitude = latitude;
