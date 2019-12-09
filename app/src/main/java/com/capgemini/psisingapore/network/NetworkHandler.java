@@ -2,7 +2,6 @@ package com.capgemini.psisingapore.network;
 
 import android.content.Context;
 import android.util.Log;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -13,14 +12,11 @@ import com.android.volley.toolbox.Volley;
 import com.capgemini.psisingapore.R;
 import com.capgemini.psisingapore.util.AppConstants;
 import com.capgemini.psisingapore.model.Location;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static com.capgemini.psisingapore.util.AppConstants.REGION_EAST;
 import static com.capgemini.psisingapore.util.AppConstants.REGION_NATIONAL;
 import static com.capgemini.psisingapore.util.AppConstants.REGION_NORTH;
@@ -150,59 +146,66 @@ public class NetworkHandler {
             JSONObject readings = jsonArray.getJSONObject(0).getJSONObject("readings");
             switch (region.getName()) {
                 case REGION_EAST:
-                    int e_no2_one_hour_max = readings.getJSONObject("no2_one_hour_max").getInt(REGION_EAST);
-                    int e_o3_eight_hour_max = readings.getJSONObject("o3_eight_hour_max").getInt(REGION_EAST);
-                    int e_psi_twenty_four_hourly = readings.getJSONObject("psi_twenty_four_hourly").getInt(REGION_EAST);
-                    int e_so2_twenty_four_hourly = readings.getJSONObject("so2_twenty_four_hourly").getInt(REGION_EAST);
+                    int eNo2OneHourMax = readings.getJSONObject("no2_one_hour_max").getInt(REGION_EAST);
+                    int eO3EightHourMax = readings.getJSONObject("o3_eight_hour_max").getInt(REGION_EAST);
+                    int ePsiTwentyFourHourly = readings.getJSONObject("psi_twenty_four_hourly").getInt(REGION_EAST);
+                    int eSo2TwentyFourHourly = readings.getJSONObject("so2_twenty_four_hourly").getInt(REGION_EAST);
 
-                    east.setNo2OnehourMax(context.getResources().getString(R.string.no2_one_hour_max), e_no2_one_hour_max);
-                    east.setO3EightHourMax(context.getResources().getString(R.string.o3_eight_hour_max), e_o3_eight_hour_max);
-                    east.setPsiTwentyFourHourly(context.getResources().getString(R.string.psi_twenty_four_hourly), e_psi_twenty_four_hourly);
-                    east.setSo2TwentyFourHourly(context.getResources().getString(R.string.so2_twenty_four_hourly), e_so2_twenty_four_hourly);
+                    east.setNo2OnehourMax(context.getResources().getString(R.string.no2_one_hour_max), eNo2OneHourMax);
+                    east.setO3EightHourMax(context.getResources().getString(R.string.o3_eight_hour_max), eO3EightHourMax);
+                    east.setPsiTwentyFourHourly(context.getResources().getString(R.string.psi_twenty_four_hourly), ePsiTwentyFourHourly);
+                    east.setSo2TwentyFourHourly(context.getResources().getString(R.string.so2_twenty_four_hourly), eSo2TwentyFourHourly);
                     east.setAppInfo(status);
                     locations.add(east);
 
                     break;
-                case REGION_WEST:
-                    int w_no2_one_hour_max = readings.getJSONObject("no2_one_hour_max").getInt(REGION_WEST);
-                    int w_o3_eight_hour_max = readings.getJSONObject("o3_eight_hour_max").getInt(REGION_WEST);
-                    int w_psi_twenty_four_hourly = readings.getJSONObject("psi_twenty_four_hourly").getInt(REGION_WEST);
-                    int w_so2_twenty_four_hourly = readings.getJSONObject("so2_twenty_four_hourly").getInt(REGION_WEST);
 
-                    west.setNo2OnehourMax(context.getResources().getString(R.string.no2_one_hour_max), w_no2_one_hour_max);
-                    west.setO3EightHourMax(context.getResources().getString(R.string.o3_eight_hour_max), w_o3_eight_hour_max);
-                    west.setPsiTwentyFourHourly(context.getResources().getString(R.string.psi_twenty_four_hourly), w_psi_twenty_four_hourly);
-                    west.setSo2TwentyFourHourly(context.getResources().getString(R.string.so2_twenty_four_hourly), w_so2_twenty_four_hourly);
+                case REGION_WEST:
+                    int wNo2OneHourMax = readings.getJSONObject("no2_one_hour_max").getInt(REGION_WEST);
+                    int wO3EightHourMax = readings.getJSONObject("o3_eight_hour_max").getInt(REGION_WEST);
+                    int wPsiTwentyFourHourly = readings.getJSONObject("psi_twenty_four_hourly").getInt(REGION_WEST);
+                    int wSo2TwentyFourHourly = readings.getJSONObject("so2_twenty_four_hourly").getInt(REGION_WEST);
+
+                    west.setNo2OnehourMax(context.getResources().getString(R.string.no2_one_hour_max), wNo2OneHourMax);
+                    west.setO3EightHourMax(context.getResources().getString(R.string.o3_eight_hour_max), wO3EightHourMax);
+                    west.setPsiTwentyFourHourly(context.getResources().getString(R.string.psi_twenty_four_hourly), wPsiTwentyFourHourly);
+                    west.setSo2TwentyFourHourly(context.getResources().getString(R.string.so2_twenty_four_hourly), wSo2TwentyFourHourly);
                     west.setAppInfo(status);
                     locations.add(west);
-                    break;
-                case REGION_NORTH:
-                    int n_no2_one_hour_max = readings.getJSONObject("no2_one_hour_max").getInt(REGION_NORTH);
-                    int n_o3_eight_hour_max = readings.getJSONObject("o3_eight_hour_max").getInt(REGION_NORTH);
-                    int n_psi_twenty_four_hourly = readings.getJSONObject("psi_twenty_four_hourly").getInt(REGION_NORTH);
-                    int n_so2_twenty_four_hourly = readings.getJSONObject("so2_twenty_four_hourly").getInt(REGION_NORTH);
 
-                    north.setNo2OnehourMax(context.getResources().getString(R.string.no2_one_hour_max), n_no2_one_hour_max);
-                    north.setO3EightHourMax(context.getResources().getString(R.string.o3_eight_hour_max), n_o3_eight_hour_max);
-                    north.setPsiTwentyFourHourly(context.getResources().getString(R.string.psi_twenty_four_hourly), n_psi_twenty_four_hourly);
-                    north.setSo2TwentyFourHourly(context.getResources().getString(R.string.so2_twenty_four_hourly), n_so2_twenty_four_hourly);
+                    break;
+
+                case REGION_NORTH:
+                    int nNo2OneHourMax = readings.getJSONObject("no2_one_hour_max").getInt(REGION_NORTH);
+                    int nO3EightHourMax = readings.getJSONObject("o3_eight_hour_max").getInt(REGION_NORTH);
+                    int nPsiTwentyFourHourly = readings.getJSONObject("psi_twenty_four_hourly").getInt(REGION_NORTH);
+                    int nSo2TwentyFourHourly = readings.getJSONObject("so2_twenty_four_hourly").getInt(REGION_NORTH);
+
+                    north.setNo2OnehourMax(context.getResources().getString(R.string.no2_one_hour_max), nNo2OneHourMax);
+                    north.setO3EightHourMax(context.getResources().getString(R.string.o3_eight_hour_max), nO3EightHourMax);
+                    north.setPsiTwentyFourHourly(context.getResources().getString(R.string.psi_twenty_four_hourly), nPsiTwentyFourHourly);
+                    north.setSo2TwentyFourHourly(context.getResources().getString(R.string.so2_twenty_four_hourly), nSo2TwentyFourHourly);
                     north.setAppInfo(status);
                     locations.add(north);
+
                     break;
+
                 case REGION_SOUTH:
 
-                    int s_no2_one_hour_max = readings.getJSONObject("no2_one_hour_max").getInt(REGION_SOUTH);
-                    int s_o3_eight_hour_max = readings.getJSONObject("o3_eight_hour_max").getInt(REGION_SOUTH);
-                    int s_psi_twenty_four_hourly = readings.getJSONObject("psi_twenty_four_hourly").getInt(REGION_SOUTH);
-                    int s_so2_twenty_four_hourly = readings.getJSONObject("so2_twenty_four_hourly").getInt(REGION_SOUTH);
+                    int sNo2OneHourMax = readings.getJSONObject("no2_one_hour_max").getInt(REGION_SOUTH);
+                    int sO3EightHourMax = readings.getJSONObject("o3_eight_hour_max").getInt(REGION_SOUTH);
+                    int sPsiTwentyFourHourly = readings.getJSONObject("psi_twenty_four_hourly").getInt(REGION_SOUTH);
+                    int sSo2TwentyFourHourly = readings.getJSONObject("so2_twenty_four_hourly").getInt(REGION_SOUTH);
 
-                    south.setNo2OnehourMax(context.getResources().getString(R.string.no2_one_hour_max), s_no2_one_hour_max);
-                    south.setO3EightHourMax(context.getResources().getString(R.string.o3_eight_hour_max), s_o3_eight_hour_max);
-                    south.setPsiTwentyFourHourly(context.getResources().getString(R.string.psi_twenty_four_hourly), s_psi_twenty_four_hourly);
-                    south.setSo2TwentyFourHourly(context.getResources().getString(R.string.so2_twenty_four_hourly), s_so2_twenty_four_hourly);
+                    south.setNo2OnehourMax(context.getResources().getString(R.string.no2_one_hour_max), sNo2OneHourMax);
+                    south.setO3EightHourMax(context.getResources().getString(R.string.o3_eight_hour_max), sO3EightHourMax);
+                    south.setPsiTwentyFourHourly(context.getResources().getString(R.string.psi_twenty_four_hourly), sPsiTwentyFourHourly);
+                    south.setSo2TwentyFourHourly(context.getResources().getString(R.string.so2_twenty_four_hourly), sSo2TwentyFourHourly);
                     south.setAppInfo(status);
                     locations.add(south);
+
                     break;
+
                 default:
                     //do nothing
                     break;
@@ -247,5 +250,4 @@ public class NetworkHandler {
         }
         return longitude;
     }
-
 }
